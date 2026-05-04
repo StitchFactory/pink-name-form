@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Name</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 48px 40px;
+      box-shadow: 0 8px 32px rgba(244, 143, 177, 0.3);
+      width: 100%;
+      max-width: 420px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 32px;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #e91e8c, #f06292);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #ad1457;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #f48fb1;
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      background: #fff0f5;
+      color: #333;
+    }
+
+    input[type="text"]:focus {
+      border-color: #e91e8c;
+      background: #fff;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(135deg, #e91e8c, #f06292, #f48fb1);
+      background-size: 200% 200%;
+      transition: background-position 0.4s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(233, 30, 140, 0.4);
+    }
+
+    button:hover {
+      background-position: right center;
+      box-shadow: 0 6px 20px rgba(233, 30, 140, 0.55);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    #result {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1rem;
+      color: #c2185b;
+      min-height: 24px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Add a Name</h1>
+    <label for="nameInput">Your Name</label>
+    <input type="text" id="nameInput" placeholder="Enter a name..." />
+    <button onclick="submitName()">Submit</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function submitName() {
+      const input = document.getElementById('nameInput');
+      const result = document.getElementById('result');
+      const name = input.value.trim();
+
+      if (!name) {
+        result.style.color = '#e53935';
+        result.textContent = 'Please enter a name.';
+        return;
+      }
+
+      result.style.color = '#c2185b';
+      result.textContent = `Hello, ${name}!`;
+      input.value = '';
+    }
+
+    document.getElementById('nameInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') submitName();
+    });
+  </script>
+</body>
+</html>
